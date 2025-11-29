@@ -58,4 +58,31 @@ public final class Constants {
             new Translation3d(-0.081165, 0.322330, 0.191168),
             new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(180.0 - 55.0)));
   }
+
+  public  final class Intake {
+    public static enum RollerState {
+      In(5, 4),
+      Out(-12, 0),
+      TroughOut(3.25, 0),
+      Off(0, 0);
+      public final double rollingVoltage;
+      public final double centeringVoltage;
+
+      RollerState(double rollingVoltage, double centeringVoltage) {
+        this.rollingVoltage = rollingVoltage;
+        this.centeringVoltage = centeringVoltage;
+      }
+    }
+
+    public static enum PivotState {
+      Up(0),
+      Down(0),
+      Trough(0);
+      public final double pivotPosition;
+
+      PivotState(double pivotPosition) {
+        this.pivotPosition = pivotPosition;
+      }
+    }
+  }
 }
