@@ -12,6 +12,15 @@
 // GNU General Public License for more details.
 package frc.robot.subsystems.Intake;
 
+import frc.robot.Constants.Intake.PivotState;
+import frc.robot.Constants.Intake.RollerState;
+
 public interface IntakeIO {
   void periodic();
+
+  void setState(PivotState p, RollerState s);
+
+  boolean hasCoral();
+
+  boolean unsafeToGoUp();
 }

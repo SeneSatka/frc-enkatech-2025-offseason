@@ -12,14 +12,40 @@
 // GNU General Public License for more details.
 package frc.robot.subsystems.Intake;
 
+import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import frc.robot.Constants.CanIds;
+import frc.robot.Constants.Intake.PivotState;
+import frc.robot.Constants.Intake.RollerState;
 
 public class IntakeIOReal implements IntakeIO {
+
   public final TalonFX pivotMotor = new TalonFX(CanIds.IntakePivotMotor, "canivore");
+  // TODO: pivot motor configs will add
+
   public final TalonFX rollerMotor = new TalonFX(CanIds.IntakeRollerMotor, "canivore");
   public final TalonFX centeringMotor = new TalonFX(CanIds.IntakeCenteringMotor, "canivore");
+  public RollerState rollerState = RollerState.Off;
+  public PivotState pivotState = PivotState.Up;
+
+  public boolean hasCoral() {
+    // TODO: read sensor value
+    return false;
+  }
+
+  public boolean unsafeToGoUp() {
+    // TODO: calucate distance of arm and intake pos
+    return false;
+  }
 
   @Override
-  public void periodic() {}
+  public void setState(PivotState p, RollerState s) {
+
+  }
+
+  public void periodic() {
+    rollerMotor.setVoltage(rollerState.rollingVoltage);
+    centeringMotor.setVoltage(rollerState.centeringVoltage);
+    pivotMotor.setControl(new MotionMagicVoltage(pivotState.angleSetpoint / (2 * Math.PI)));
+  }
 }

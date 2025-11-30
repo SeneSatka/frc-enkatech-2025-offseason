@@ -45,22 +45,18 @@ public final class Constants {
     public static final String BackLeftName = "Back Left";
 
     // Camera poses
-    public static final Transform3d FRONT_RIGHT_TRANSFORM =
-        new Transform3d(
-            new Translation3d(-0.012552, -0.319809, 0.191168),
-            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-70.0)));
-    public static final Transform3d BACK_RIGHT_TRANSFORM =
-        new Transform3d(
-            new Translation3d(-0.081165, -0.322330, 0.191168),
-            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-(180.0 - 55.0))));
-    public static final Transform3d FRONT_LEFT_TRANSFORM =
-        new Transform3d(
-            new Translation3d(-0.012552, 0.319809, 0.191168),
-            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(70.0)));
-    public static final Transform3d BACK_LEFT_TRANSFORM =
-        new Transform3d(
-            new Translation3d(-0.081165, 0.322330, 0.191168),
-            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(180.0 - 55.0)));
+    public static final Transform3d FRONT_RIGHT_TRANSFORM = new Transform3d(
+        new Translation3d(-0.012552, -0.319809, 0.191168),
+        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-70.0)));
+    public static final Transform3d BACK_RIGHT_TRANSFORM = new Transform3d(
+        new Translation3d(-0.081165, -0.322330, 0.191168),
+        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-(180.0 - 55.0))));
+    public static final Transform3d FRONT_LEFT_TRANSFORM = new Transform3d(
+        new Translation3d(-0.012552, 0.319809, 0.191168),
+        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(70.0)));
+    public static final Transform3d BACK_LEFT_TRANSFORM = new Transform3d(
+        new Translation3d(-0.081165, 0.322330, 0.191168),
+        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(180.0 - 55.0)));
   }
 
   public final class Intake {
@@ -69,6 +65,7 @@ public final class Constants {
       Out(-12, 0),
       TroughOut(3.25, 0),
       Off(0, 0);
+
       public final double rollingVoltage;
       public final double centeringVoltage;
 
@@ -82,10 +79,11 @@ public final class Constants {
       Up(0),
       Down(0),
       Trough(0);
-      public final double pivotPosition;
 
-      PivotState(double pivotPosition) {
-        this.pivotPosition = pivotPosition;
+      public final double angleSetpoint;
+
+      PivotState(double angleSetpoint) {
+        this.angleSetpoint = angleSetpoint;
       }
     }
   }

@@ -12,7 +12,31 @@
 // GNU General Public License for more details.
 package frc.robot.subsystems.Intake;
 
+import frc.robot.Constants.Intake.PivotState;
+import frc.robot.Constants.Intake.RollerState;
+
 public class IntakeIOSim implements IntakeIO {
   @Override
-  public void periodic() {}
+  public void periodic() {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void setState(PivotState p, RollerState s) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public boolean hasCoral() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean unsafeToGoUp() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 }
