@@ -12,7 +12,14 @@
 // GNU General Public License for more details.
 package frc.robot.subsystems.Intake;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import frc.robot.Constants.CanIds;
+
 public class IntakeIOReal implements IntakeIO {
+  public final TalonFX pivotMotor = new TalonFX(CanIds.IntakePivotMotor, "canivore");
+  public final TalonFX rollerMotor = new TalonFX(CanIds.IntakeRollerMotor, "canivore");
+  public final TalonFX centeringMotor = new TalonFX(CanIds.IntakeCenteringMotor, "canivore");
+
   @Override
   public void periodic() {}
 }

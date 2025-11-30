@@ -39,7 +39,7 @@ public class SubSystems {
       case SIM:
         // Sim robot, instantiate physics sim IO implementations
         vision = new Vision(new VisionIOSim());
-         intake = new Intake(new IntakeIOSim());
+        intake = new Intake(new IntakeIOSim());
         drive =
             new Drive(
                 new GyroIO() {},
@@ -52,7 +52,7 @@ public class SubSystems {
 
       default:
         vision = new Vision();
-         intake = new Intake();
+        intake = new Intake();
         drive =
             new Drive(
                 new GyroIO() {},

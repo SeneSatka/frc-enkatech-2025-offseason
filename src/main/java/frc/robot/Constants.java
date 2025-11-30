@@ -22,7 +22,11 @@ public final class Constants {
   public static final Mode simMode = Mode.SIM;
   public static final Mode currentMode = RobotBase.isReal() ? Mode.REAL : simMode;
 
-  public static final class CanIds {}
+  public static final class CanIds {
+    public static final int IntakeCenteringMotor = 0;
+    public static final int IntakeRollerMotor = 0;
+    public static final int IntakePivotMotor = 0;
+  }
 
   public static final class Field {
     public static final double FIELD_X_SIZE = 17.548249;
@@ -59,7 +63,7 @@ public final class Constants {
             new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(180.0 - 55.0)));
   }
 
-  public  final class Intake {
+  public final class Intake {
     public static enum RollerState {
       In(5, 4),
       Out(-12, 0),
