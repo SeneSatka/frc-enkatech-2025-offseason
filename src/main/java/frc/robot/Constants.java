@@ -62,6 +62,7 @@ public final class Constants {
   public final class Intake {
     public static enum RollerState {
       In(5, 4),
+      SlowIn(2, 3),
       Out(-12, 0),
       TroughOut(3.25, 0),
       Off(0, 0);

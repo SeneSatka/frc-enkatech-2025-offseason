@@ -18,9 +18,13 @@ import frc.robot.Constants.Intake.RollerState;
 public interface IntakeIO {
   void periodic();
 
-  void setState(PivotState p, RollerState s);
+  void setState(PivotState p, RollerState r);
 
   boolean hasCoral();
 
   boolean unsafeToGoUp();
+
+  public RollerState getRollerState();
+
+  public PivotState getPivotState();
 }

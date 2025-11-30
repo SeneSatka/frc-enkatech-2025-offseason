@@ -39,4 +39,16 @@ public class IntakeIOSim implements IntakeIO {
     // TODO Auto-generated method stub
     return false;
   }
+
+  @Override
+  public PivotState getPivotState() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public RollerState getRollerState() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

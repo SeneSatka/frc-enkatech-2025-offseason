@@ -38,14 +38,34 @@ public class IntakeIOReal implements IntakeIO {
     return false;
   }
 
-  @Override
-  public void setState(PivotState p, RollerState s) {
+  public void setState(PivotState p, RollerState r) {
+    pivotState = p;
+    rollerState = r;
+  }
 
+  public RollerState getRollerState() {
+    RollerState state = rollerState;
+    if (state.equals(RollerState.In) && hasCoral())
+      state = RollerState.SlowIn;
+
+    return state;
+  }
+
+  public PivotState getPivotState() {
+    PivotState state = pivotState;
+
+    if (state.equals(PivotState.Down) && hasCoral())
+      state = PivotState.Up;
+
+    if (state.equals(PivotState.Up) && unsafeToGoUp())
+      state = PivotState.Down;
+
+    return state;
   }
 
   public void periodic() {
-    rollerMotor.setVoltage(rollerState.rollingVoltage);
-    centeringMotor.setVoltage(rollerState.centeringVoltage);
-    pivotMotor.setControl(new MotionMagicVoltage(pivotState.angleSetpoint / (2 * Math.PI)));
+    rollerMotor.setVoltage(getRollerState().rollingVoltage);
+    centeringMotor.setVoltage(getRollerState().centeringVoltage);
+    pivotMotor.setControl(new MotionMagicVoltage(getPivotState().angleSetpoint / (2 * Math.PI)));
   }
 }
