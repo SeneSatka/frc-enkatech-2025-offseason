@@ -2,7 +2,11 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants;
 import frc.robot.generated.TunerConstants;
+import frc.robot.subsystems.Arm.Arm;
+import frc.robot.subsystems.Arm.ArmIOReal;
+import frc.robot.subsystems.Arm.ArmIOSim;
 import frc.robot.subsystems.Intake.Intake;
+import frc.robot.subsystems.Intake.IntakeIO;
 import frc.robot.subsystems.Intake.IntakeIOReal;
 import frc.robot.subsystems.Intake.IntakeIOSim;
 import frc.robot.subsystems.Vision.Vision;
@@ -19,6 +23,7 @@ public class SubSystems {
   public final Drive drive;
   public final Vision vision;
   public final Intake intake;
+  public final Arm arm;
 
   public SubSystems() {
     switch (Constants.currentMode) {
@@ -26,6 +31,7 @@ public class SubSystems {
         // Real robot, instantiate hardware IO implementations
         vision = new Vision(new VisionIOReal());
         intake = new Intake(new IntakeIOReal());
+        arm = new Arm(new ArmIOReal());
         drive =
             new Drive(
                 new GyroIOPigeon2(),
@@ -40,6 +46,7 @@ public class SubSystems {
         // Sim robot, instantiate physics sim IO implementations
         vision = new Vision(new VisionIOSim());
         intake = new Intake(new IntakeIOSim());
+        arm = new Arm(new ArmIOSim());
         drive =
             new Drive(
                 new GyroIO() {},
@@ -53,6 +60,7 @@ public class SubSystems {
       default:
         vision = new Vision();
         intake = new Intake();
+        arm = new Arm();
         drive =
             new Drive(
                 new GyroIO() {},

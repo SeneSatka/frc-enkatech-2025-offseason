@@ -45,18 +45,22 @@ public final class Constants {
     public static final String BackLeftName = "Back Left";
 
     // Camera poses
-    public static final Transform3d FRONT_RIGHT_TRANSFORM = new Transform3d(
-        new Translation3d(-0.012552, -0.319809, 0.191168),
-        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-70.0)));
-    public static final Transform3d BACK_RIGHT_TRANSFORM = new Transform3d(
-        new Translation3d(-0.081165, -0.322330, 0.191168),
-        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-(180.0 - 55.0))));
-    public static final Transform3d FRONT_LEFT_TRANSFORM = new Transform3d(
-        new Translation3d(-0.012552, 0.319809, 0.191168),
-        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(70.0)));
-    public static final Transform3d BACK_LEFT_TRANSFORM = new Transform3d(
-        new Translation3d(-0.081165, 0.322330, 0.191168),
-        new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(180.0 - 55.0)));
+    public static final Transform3d FRONT_RIGHT_TRANSFORM =
+        new Transform3d(
+            new Translation3d(-0.012552, -0.319809, 0.191168),
+            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-70.0)));
+    public static final Transform3d BACK_RIGHT_TRANSFORM =
+        new Transform3d(
+            new Translation3d(-0.081165, -0.322330, 0.191168),
+            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(-(180.0 - 55.0))));
+    public static final Transform3d FRONT_LEFT_TRANSFORM =
+        new Transform3d(
+            new Translation3d(-0.012552, 0.319809, 0.191168),
+            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(70.0)));
+    public static final Transform3d BACK_LEFT_TRANSFORM =
+        new Transform3d(
+            new Translation3d(-0.081165, 0.322330, 0.191168),
+            new Rotation3d(0.0, Math.toRadians(-20.0), Math.toRadians(180.0 - 55.0)));
   }
 
   public final class Intake {
@@ -75,16 +79,40 @@ public final class Constants {
         this.centeringVoltage = centeringVoltage;
       }
     }
-
+    public static double SETPOINT_THRESHOLD=0.1;
     public static enum PivotState {
       Up(0),
       Down(0),
       Trough(0);
+      public final double pos;
 
-      public final double angleSetpoint;
+      PivotState(double pos) {
+        this.pos = pos;
+      }
+    }
+  }
+  public final class Arm {
+    public static enum RollerState {
+      In(5), 
+      Out(-12),
+      TroughOut(3.25),
+      Off(0);
 
-      PivotState(double angleSetpoint) {
-        this.angleSetpoint = angleSetpoint;
+      public final double rollingVoltage;
+
+      RollerState(double rollingVoltage) {
+        this.rollingVoltage = rollingVoltage;
+      }
+    }
+    public static double SETPOINT_THRESHOLD=0.1;
+    public static enum PivotState {
+      Up(0),
+      Down(0),
+      Trough(0);
+      public final double pos;
+
+      PivotState(double pos) {
+        this.pos = pos;
       }
     }
   }

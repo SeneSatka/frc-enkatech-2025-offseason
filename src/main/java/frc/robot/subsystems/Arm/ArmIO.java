@@ -10,26 +10,21 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-package frc.robot.subsystems.Intake;
+package frc.robot.subsystems.Arm;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.Intake.PivotState;
-import frc.robot.Constants.Intake.RollerState;
+import frc.robot.Constants.Arm.PivotState;
+import frc.robot.Constants.Arm.RollerState;
 
-public class Intake extends SubsystemBase {
-  IntakeIO io;
+public interface ArmIO {
+  void periodic();
 
-  public Intake() {}
+  void setState(PivotState p, RollerState r);
 
-  public Intake(IntakeIO io) {
-    this.io = io;
-  }
-   public void setState(PivotState p, RollerState r) {
-    io.setState(p, r);
-  }
+  boolean hasCoral();
+  boolean pivotAtSetpoint();
 
-  @Override
-  public void periodic() {
-    io.periodic();
-  }
+
+  public RollerState getRollerState();
+
+  public PivotState getPivotState();
 }

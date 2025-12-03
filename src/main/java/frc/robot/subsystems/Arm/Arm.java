@@ -10,18 +10,18 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-package frc.robot.subsystems.Intake;
+package frc.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.Intake.PivotState;
 import frc.robot.Constants.Intake.RollerState;
 
-public class Intake extends SubsystemBase {
-  IntakeIO io;
+public class Arm extends SubsystemBase {
+  ArmIO io;
 
-  public Intake() {}
+  public Arm() {}
 
-  public Intake(IntakeIO io) {
+  public Arm(ArmIO io) {
     this.io = io;
   }
    public void setState(PivotState p, RollerState r) {

@@ -10,12 +10,12 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-package frc.robot.subsystems.Intake;
+package frc.robot.subsystems.Arm;
 
 import frc.robot.Constants.Intake.PivotState;
 import frc.robot.Constants.Intake.RollerState;
 
-public class IntakeIOSim implements IntakeIO {
+public class ArmIOSim implements ArmIO {
   @Override
   public void periodic() {
     // TODO Auto-generated method stub

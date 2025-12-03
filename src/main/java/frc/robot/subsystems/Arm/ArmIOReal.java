@@ -10,7 +10,7 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-package frc.robot.subsystems.Intake;
+package frc.robot.subsystems.Arm;
 
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -19,7 +19,7 @@ import frc.robot.Constants.Intake;
 import frc.robot.Constants.Intake.PivotState;
 import frc.robot.Constants.Intake.RollerState;
 
-public class IntakeIOReal implements IntakeIO {
+public class ArmIOReal implements ArmIO {
 
   public final TalonFX pivotMotor = new TalonFX(CanIds.IntakePivotMotor, "canivore");
   public final MotionMagicVoltage pivotMotionControl=new MotionMagicVoltage(PivotState.Up.pos);
