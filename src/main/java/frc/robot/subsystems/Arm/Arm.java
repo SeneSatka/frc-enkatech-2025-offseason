@@ -13,18 +13,20 @@
 package frc.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.Intake.PivotState;
-import frc.robot.Constants.Intake.RollerState;
+import frc.robot.Constants.Arm.PivotState;
+import frc.robot.Constants.Arm.RollerState;
 
 public class Arm extends SubsystemBase {
   ArmIO io;
 
-  public Arm() {}
+  public Arm() {
+  }
 
   public Arm(ArmIO io) {
     this.io = io;
   }
-   public void setState(PivotState p, RollerState r) {
+
+  public void setState(PivotState p, RollerState r) {
     io.setState(p, r);
   }
 

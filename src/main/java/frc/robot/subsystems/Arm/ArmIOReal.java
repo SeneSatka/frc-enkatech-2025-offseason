@@ -15,14 +15,14 @@ package frc.robot.subsystems.Arm;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import frc.robot.Constants.CanIds;
-import frc.robot.Constants.Intake;
-import frc.robot.Constants.Intake.PivotState;
-import frc.robot.Constants.Intake.RollerState;
+import frc.robot.Constants.Arm;
+import frc.robot.Constants.Arm.PivotState;
+import frc.robot.Constants.Arm.RollerState;
 
 public class ArmIOReal implements ArmIO {
 
   public final TalonFX pivotMotor = new TalonFX(CanIds.IntakePivotMotor, "canivore");
-  public final MotionMagicVoltage pivotMotionControl=new MotionMagicVoltage(PivotState.Up.pos);
+  public final MotionMagicVoltage pivotMotionControl = new MotionMagicVoltage(PivotState.Up.pos);
   // TODO: pivot motor configs will add
 
   public final TalonFX rollerMotor = new TalonFX(CanIds.IntakeRollerMotor, "canivore");
@@ -47,27 +47,30 @@ public class ArmIOReal implements ArmIO {
 
   public RollerState getRollerState() {
     RollerState state = rollerState;
-    if (state.equals(RollerState.In) && hasCoral()) state = RollerState.SlowIn;
+    if (state.equals(RollerState.In) && hasCoral())
+      state = RollerState.SlowIn;
 
     return state;
   }
-  public boolean pivotAtSetpoint(){
-    return Math.abs(pivotMotor.getPosition().getValueAsDouble()-getPivotState().pos)<Intake.SETPOINT_THRESHOLD;
+
+  public boolean pivotAtSetpoint() {
+    return Math.abs(pivotMotor.getPosition().getValueAsDouble() - getPivotState().pos) < Intake.SETPOINT_THRESHOLD;
   }
 
   public PivotState getPivotState() {
     PivotState state = pivotState;
 
-    if (state.equals(PivotState.Down) && hasCoral()) state = PivotState.Up;
+    if (state.equals(PivotState.Down) && hasCoral())
+      state = PivotState.Up;
 
-    if (state.equals(PivotState.Up) && unsafeToGoUp()) state = PivotState.Down;
+    if (state.equals(PivotState.Up) && unsafeToGoUp())
+      state = PivotState.Down;
 
     return state;
   }
 
   public void periodic() {
     rollerMotor.setVoltage(getRollerState().rollingVoltage);
-    centeringMotor.setVoltage(getRollerState().centeringVoltage);
     pivotMotor.setControl(pivotMotionControl.withPosition(getPivotState().pos));
   }
 }
